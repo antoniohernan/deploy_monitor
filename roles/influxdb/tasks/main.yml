@@ -1,0 +1,36 @@
+---
+- name: Check if InfluxDB repo is already configured.
+  stat: path={{ influxdb_repofile_path }}
+  register: influxdb_repofile_result
+ 
+- name: Install InfluxDB repo.
+  copy:
+    src: influxdb.repo
+    dest: "{{ influxdb_repofile_path }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: not influxdb_repofile_result.stat.exists
+
+- name: Install InfluxDB
+  yum:
+    name: influxdb
+    state: present
+ 
+- name: Configure InfluxDB
+  template:
+    src: influxdb.conf.j2
+    dest: /etc/influxdb/influxdb.conf
+
+- name: Enable InfluxDB service
+  systemd:
+    name: influxdb
+    enabled: yes
+
+- name: Start InfluxDB service
+  systemd:
+    name: influxdb
+    state: restarted
+
+- name: Create CollectD Database at InfluxDB
+  command: /usr/bin/influx -execute 'CREATE DATABASE "{{ COLLECTD_DB_NAME }}"'

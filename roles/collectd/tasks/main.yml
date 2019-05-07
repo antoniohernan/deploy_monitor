@@ -1,0 +1,21 @@
+---
+- name: Install CollectD
+  yum:
+    name: "{{ collectd_version }}" 
+    state: present
+    enablerepo: epel
+ 
+- name: Configure CollectD
+  template:
+    src: collectd.conf.j2
+    dest: /etc/collectd.conf
+
+- name: Enable CollectD service
+  systemd:
+    name: collectd
+    enabled: yes
+
+- name: Start CollectD service
+  systemd:
+    name: collectd
+    state: restarted

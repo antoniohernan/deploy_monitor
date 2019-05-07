@@ -1,0 +1,18 @@
+---
+- hosts: bastion
+  gather_facts: yes 
+  roles:
+    - epel-repository
+    - collectd
+    - influxdb
+
+- hosts: NODES
+  gather_facts: yes 
+  roles:
+    - epel-repository
+    - collectd
+
+- hosts: bastion
+  gather_facts: yes 
+  roles:
+    - grafana

@@ -1,0 +1,4 @@
+.- Grafana reset user passwd
+.- Grafana add datasource para InfluxDB y collectd
+.- Grafana add dashboard desde JSON (Cpu, ram, ethernet, disco)
+

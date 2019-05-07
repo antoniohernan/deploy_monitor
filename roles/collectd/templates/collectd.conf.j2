@@ -1,0 +1,32 @@
+Hostname "{{ host_name }}"
+BaseDir "/var/lib/collectd"
+PluginDir "/usr/lib64/collectd"
+TypesDB "/usr/share/collectd/types.db"
+Interval 30
+
+LoadPlugin cpu
+<Plugin "cpu">
+  ValuesPercentage true
+  ReportByCpu false
+</Plugin>
+
+LoadPlugin df
+<Plugin "df">
+  MountPoint "/"
+  IgnoreSelected false
+  ReportInodes false
+</Plugin>
+
+LoadPlugin interface
+<Plugin "interface">
+  Interface "{{ net_iface }}"
+  IgnoreSelected false
+</Plugin>
+
+LoadPlugin memory
+
+LoadPlugin network
+<Plugin network>
+ Server "{{ INFLUXDBSRV }}" "{{ INFLUXDBPORT }}"
+</Plugin>
+

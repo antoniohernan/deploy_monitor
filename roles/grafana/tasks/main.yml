@@ -1,0 +1,34 @@
+---
+- name: Check if Grafana repo is already configured.
+  stat: path={{ grafana_repofile_path }}
+  register: grafana_repofile_result
+ 
+- name: Install Grafana repo.
+  copy:
+    src: grafana.repo
+    dest: "{{ grafana_repofile_path }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: not grafana_repofile_result.stat.exists
+
+- name: Install Grafana
+  yum:
+    name: grafana
+    state: present
+    enablerepo: grafana
+
+- name: Configure Grafana
+  template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+
+- name: Enable Grafana
+  systemd:
+    name: grafana-server
+    enabled: yes
+
+- name: Start Grafana
+  systemd:
+    name: grafana-server
+    state: started
