@@ -1,5 +1,7 @@
 .- CollectD services discover (Apache, NGinX, MySQl, Tomcat, Jboss) auto deploy plugins
 
+.- InfluxDB add retention policy (configurable 1 week, 1 month, X months..)
+
 .- Grafana reset user passwd
 .- Grafana add datasource for InfluxDB (collectd_db database)
 .- Grafana add dashboard from JSON (Cpu, ram, ethernet, disk)
