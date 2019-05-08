@@ -84,7 +84,7 @@ ansible-playbook -i ./inventories/hosts.yml ./install_monitoring.yml
 
 Acceso a consola de Grafana
 -----------------------------------------
-http://<bastionhostip>:3000
+http://bastionhostip:3000
 
 Usuario : admin
 
