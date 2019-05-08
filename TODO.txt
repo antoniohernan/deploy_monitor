@@ -1,4 +1,6 @@
-.- Grafana reset user passwd
-.- Grafana add datasource para InfluxDB y collectd
-.- Grafana add dashboard desde JSON (Cpu, ram, ethernet, disco)
+.- CollectD services discover (Apache, NGinX, MySQl, Tomcat, Jboss) auto deploy plugins
 
+.- Grafana reset user passwd
+.- Grafana add datasource for InfluxDB (collectd_db database)
+.- Grafana add dashboard from JSON (Cpu, ram, ethernet, disk)
+.- Grafana add alarms (mail + Telegram bot)
