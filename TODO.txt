@@ -2,6 +2,7 @@
 .- CollectD deploy different OSs (Centos, RHEL, Ubuntu, Debian)
 
 .- InfluxDB add retention policy (configurable 1 week, 1 month, X months..)
+   CREATE RETENTION POLICY "30_days" ON collectd DURATION 30d REPLICATION 1 default
 
 .- Grafana reset user passwd
 .- Grafana add datasource for InfluxDB (collectd_db database)
