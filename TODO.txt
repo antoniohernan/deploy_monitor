@@ -1,4 +1,5 @@
 .- CollectD services discover (Apache, NGinX, MySQl, Tomcat, Jboss) auto deploy plugins
+.- CollectD deploy different OSs (Centos, RHEL, Ubuntu, Debian)
 
 .- InfluxDB add retention policy (configurable 1 week, 1 month, X months..)
 
