@@ -1,0 +1,30 @@
+Create Retention Policy 2 months:
+
+[root@ ~]# influx
+Connected to http://localhost:8086 version 1.7.6
+InfluxDB shell version: 1.7.6
+Enter an InfluxQL query
+> use collectd_db
+Using database collectd_db
+> CREATE RETENTION POLICY RetencionCollect ON collectd_db DURATION 8w REPLICATION 1
+
+Manual series deletion:
+
+> use collectd_db
+Using database collect_db
+> drop series from cpu_value where type = 'cpu'
+> drop series from load_longterm
+> drop series from load_midterm
+> drop series from load_shortterm
+> drop series from interface_rx where instance <> 'eth0'
+> drop series from interface_tx where instance <> 'eth0'
+
+etc..
+
+Timestamp bases delete:
+
+use collect_db
+
+> use collectd_db
+Using database collect_db
+> DELETE WHERE time < '2019-05-15'
