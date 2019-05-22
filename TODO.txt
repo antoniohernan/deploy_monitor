@@ -1,5 +1,11 @@
 .- CollectD services discover (Apache, NGinX, MySQl, Tomcat, Jboss) auto deploy plugins
+
+
 .- CollectD deploy different OSs (Centos, RHEL, Ubuntu, Debian)
+"ansible_distribution": "Ubuntu", 
+"ansible_distribution": "CentOS",
+"ansible_distribution": "RedHat",
+
 
 .- InfluxDB add retention policy (configurable 1 week, 1 month, X months..)
    CREATE RETENTION POLICY "30_days" ON collectd DURATION 30d REPLICATION 1 default
